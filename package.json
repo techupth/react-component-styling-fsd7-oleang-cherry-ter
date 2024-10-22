@@ -10,6 +10,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "lucide-react": "^0.453.0",
     "node-fetch": "^3.3.2",
     "pg": "^8.11.3",
     "react": "^18.2.0",
@@ -22,7 +23,10 @@
     "@types/react-dom": "^18.0.9",
     "@vitejs/plugin-react": "^3.0.0",
     "@vitest/coverage-c8": "^0.31.1",
+    "autoprefixer": "^10.4.20",
     "jsdom": "^22.0.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
     "vite": "^4.0.0",
     "vitest": "^0.31.1"
   }
