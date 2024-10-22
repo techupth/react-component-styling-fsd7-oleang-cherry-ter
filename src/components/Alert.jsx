@@ -1,52 +1,55 @@
 // Start coding here
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-
-const alerts = [
-  { status: "Default", color: "black" },
-  { status: "Hover", color: "blue" },
-  { status: "Error", color: "red" },
-  { status: "Focus", color: "purple" },
-];
+import { Error, Warning, Info, Success } from "../assets/icon";
 
 function Alert() {
+  const alerts = [
+    { status: "Error", text: "This is error alert box", color: "red" },
+    { status: "Warning", text: "This is warning alert box", color: "orange" },
+    { status: "Info", text: "This is Info alert box", color: "yellow" },
+    { status: "Success", text: "This is success alert box", color: "green" },
+  ];
+  const iconComponents = {
+    Error: Error,
+    Warning: Warning,
+    Info: Info,
+    Success: Success,
+  };
+
   return (
     <>
-      {alerts.map((item, index) => (
-        <div key={index} css={css`
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        `}>
-          <h1>{item.status}</h1>
-          <h2>Email Address</h2>
-          <input
-            type="email"
-            placeholder="Enter email address here"
+      {alerts.map((item, index) => {
+        const IconComponent = iconComponents[item.status];
+        return (
+          <div
+            key={index}
             css={css`
-                border-color: ${item.color};
-                padding-right: 80px;
-                padding-top: 20px
-                border-radius: 20px;
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
             `}
-          />
-          <h5>We'll never share your email.</h5>
-          <h2>Username</h2>
-          <input
-            type="text"
-            placeholder="Enter Username here"
-            css={css`
-                border-color: ${item.color};
-                padding-right: 80px;
-                padding-top: 20px
-                border-radius: 20px;
-            `}
-          />
-        </div>
-      ))}
+          >
+            <div
+              css={css`
+                display: flex;
+                background-color: ${item.color};
+                padding: 10px;
+                border-radius: 5px;
+                width: 200px;
+                margin-top: 10px;
+                align-items: center; /* Align icon and text in the same row */
+                color: black;
+              `}
+            >
+              <IconComponent />
+              <span>{item.text}</span>
+            </div>
+          </div>
+        );
+      })}
     </>
   );
 }
 
 export default Alert;
-
